@@ -40,12 +40,12 @@ refs.loadBtn.addEventListener('click', loadMoreHendler)
 
 function loadMoreHendler (){
 
+    const roll = document.documentElement.scrollHeight - 85;
     fetchGallery(inputValue, pages)
     .then((res) => {
         updateGallery(res);
-        const scrollHeandler = document.documentElement.scrollHeight - 85;
         window.scrollTo({
-        top: scrollHeandler,
+        top: roll,
         behavior: 'smooth'
         });
     })

@@ -25,8 +25,8 @@ function submitHandler (event){
     fetchGallery(inputValue, pages)
     .then((res) => {
         updateGallery(res);
+        refs.loadBtn.classList.remove('is-hiden')
     })
-    refs.loadBtn.classList.remove('is-hiden')
 }
 
 function updateGallery (photo){
@@ -43,9 +43,12 @@ function loadMoreHendler (){
     fetchGallery(inputValue, pages)
     .then((res) => {
         updateGallery(res);
+        const scrollHeandler = document.documentElement.scrollHeight - 85;
+        window.scrollTo({
+        top: scrollHeandler,
+        behavior: 'smooth'
+        });
     })
-    window.scrollTo({
-    top: refs.loadBtn.offsetTop - 807,
-    behavior: 'smooth'
-    });
 }
+
+
